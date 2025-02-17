@@ -1,0 +1,167 @@
+/* 自定义字体定义 */
+@font-face {
+    font-family: 'Adobe Caslon Pro'; /* 定义字体名称 */
+    src: url('data:font/woff2;base64,d09GMgABAAAAA...'); /* Base64编码的字体文件 */
+    font-weight: 400; /* 常规字重 */
+}
+
+/* 响应式布局根设置 */
+:root {
+    --base-width: 1920; /* 设计稿基准宽度 */
+    --side-space: 263px; /* 侧边间距 */
+    /* 动态字体大小计算：基于视口宽度 */
+    font-size: calc(100vw / var(--base-width) * 19.2); 
+}
+
+/* 全局重置 */
+* {
+    margin: 0; /* 清除默认外边距 */
+    padding: 0; /* 清除默认内边距 */
+    box-sizing: border-box; /* 盒模型设置为边框盒 */
+}
+
+/* 导航栏样式 */
+nav {
+    /* 尺寸系统 */
+    width: 100%; /* 全宽 */
+    max-width: 1920px; /* 最大宽度限制 */
+    height: 243px; /* 固定高度 */
+    padding: 20px 263px; /* 内边距：上下20px 左右263px */
+    
+    /* 布局系统 */
+    display: flex; /* 弹性布局 */
+    justify-content: space-between; /* 两端对齐 */
+    align-items: center; /* 垂直居中 */
+    margin: 0 auto; /* 水平居中 */
+    background: #fff; /* 白色背景 */
+    
+    /* 调试辅助 */
+    position: relative; /* 相对定位 */
+    /* border: 1px solid rgba(255,0,0,0.2); 调试边框 */
+}
+
+/* Logo样式 */
+.logo {
+    font-family: 'Adobe Caslon Pro', serif; /* 使用自定义字体 */
+    font-size: 30px; /* 字体大小 */
+    transform: translateX(0.5rem); /* 水平微调位置 */
+    margin-top: 50px; /* 上边距 */
+}
+
+/* 导航链接容器 */
+.nav-links {
+    display: flex; /* 弹性布局 */
+    gap: 34px; /* 子项间距 */
+    list-style: none; /* 去除列表样式 */
+    transform: translateX(-0.5rem); /* 水平位置微调 */
+}
+
+/* 导航链接样式 */
+.nav-links a {
+    font-family: 'Noto Serif SC', serif; /* 中文字体 */
+    font-weight: 600; /* 中等字重 */
+    font-size: 1.25rem; /* 使用rem单位 */
+    text-decoration: none; /* 去除下划线 */
+    color: #333; /* 文字颜色 */
+    padding: 0.5rem 0; /* 上下内边距 */
+    position: relative; /* 相对定位 */
+}
+
+/* 导航链接下划线动画 */
+.nav-links a::after {
+    content: ''; /* 伪元素内容 */
+    position: absolute; /* 绝对定位 */
+    bottom: 0; /* 底部对齐 */
+    left: 0; /* 左侧对齐 */
+    width: 0; /* 初始宽度 */
+    height: 2px; /* 线高 */
+    background: #666; /* 线条颜色 */
+    transition: width 0.3s; /* 过渡动画 */
+}
+
+/* 悬停状态 */
+.nav-links a:hover::after {
+    width: 100%; /* 展开宽度 */
+}
+
+/* 轮播图容器 */
+.carousel-container {
+    width: 100%; /* 全宽 */
+    height: 544px; /* 固定高度 */
+    position: relative; /* 相对定位 */
+    overflow: hidden; /* 隐藏溢出内容 */
+}
+
+/* 轮播图幻灯片 */
+.carousel-slide {
+    position: absolute; /* 绝对定位 */
+    width: 100%; /* 全宽 */
+    height: 100%; /* 全高 */
+    opacity: 0; /* 初始透明 */
+    transition: opacity 1s ease-in-out; /* 透明度过渡动画 */
+}
+
+/* 活动幻灯片 */
+.carousel-slide.active {
+    opacity: 1; /* 完全显示 */
+}
+
+/* 轮播图图片 */
+.carousel-slide img {
+    width: 100%; /* 图片宽度填充 */
+    height: 100%; /* 图片高度填充 */
+    object-fit: cover; /* 保持比例填充容器 */
+}
+
+/* 作品集容器-修正版 */
+.portfolio {
+    width: 100%;
+    padding: 0 26px; /* 左右安全边距 */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 200px 314px; /* 行间距200px 列间距314px */
+    justify-content: center; /* 水平居中 */
+    box-sizing: border-box;
+    /* 新增容器尺寸限制 */
+    max-width: calc(540px * 2 + 314px + 26px * 2); /* 540 * 2 + 间距314 + 边距26 * 2 */
+    margin: 0 auto; /* 居中显示 */
+  }
+  
+  .portfolio-item {
+    flex: 0 0 540px; /* 固定宽度禁止缩放 */
+    height: 360px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+    /* 移除冲突的margin定义 */
+    /* 移除重复的width/height定义 */
+  }
+
+/* 作品图片 */
+.portfolio-item img {
+    width: 100%; /* 图片宽度填充 */
+    height: 100%; /* 图片高度填充 */
+    object-fit: cover; /* 保持比例填充容器 */
+}
+
+/* 悬停遮罩层 */
+.hover-mask {
+    position: absolute; /* 绝对定位 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    width: 100%; /* 全宽 */
+    height: 100%; /* 全高 */
+    background: rgba(0,0,0,0.5); /* 半透明黑色背景 */
+    opacity: 0; /* 初始透明 */
+    transition: opacity 0.3s; /* 透明度过渡动画 */
+}
+
+/* 悬停状态 */
+.portfolio-item:hover .hover-mask {
+    opacity: 1; /* 显示遮罩层 */
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05); /* 缩放效果 */
+}
+
