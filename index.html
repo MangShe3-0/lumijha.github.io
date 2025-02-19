@@ -1,70 +1,92 @@
 <!DOCTYPE html>
-<!-- index.html -->
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>专业导航栏</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap">
-    <link rel="stylesheet" href="css/style.css">
+    <title>导航栏</title>
+    <!-- 引入Noto Sans SC字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <nav>
+    <nav class="navbar">
         <div class="logo">
-            <img src="./image/1x/logo.png" alt="">
+            <img src="./image/1x/logo.png" alt="网站logo">
         </div>
-        <ul class="nav-links">
-            <li><a href="#">作品</a></li>
-            <li><a href="#">练习</a></li>
-            <li><a href="#">AI</a></li>
-            <li><a href="#">新闻</a></li>
-        </ul>
+
+        <div class="nav-links">
+            <button>排版</button>
+            <button>AI</button>
+            <button>旧闻</button>
+            <button>佳豪</button>
+        </div>
+
+        <div class="search-icon">
+            <img src="./image/1x/serch.png" alt="搜索图标">
+        </div>
     </nav>
-    <!-- 轮播 -->
-<div class="carousel-container">
-    <div class="carousel-slide active">
-      <img src="image1.jpg" alt="Slide 1">
-    </div>
-    <div class="carousel-slide">
-      <img src="image2.jpg" alt="Slide 2">
-    </div>
-    <div class="carousel-slide">
-      <img src="image3.jpg" alt="Slide 3">
-    </div>
+    <!-- 接续导航栏代码 -->
+<div class="banner-container">
+  <!-- 单图模式 -->
+  <div class="banner-slide active">
+      <img src="./image/1x/banner1-80.jpg" alt="Banner 1">
   </div>
-    <script src="js/script.js"></script>
+</div>
+
+  <!-- 多图轮播模式 -->
+  <!-- <div class="banner-slide active">
+      <img src="images/banner1.jpg" alt="Banner 1">
+  </div>
+  <div class="banner-slide">
+      <img src="images/banner2.jpg" alt="Banner 2">
+  </div>
+  <div class="banner-slide">
+      <img src="images/banner3.jpg" alt="Banner 3">
+  </div>
+</div> -->
+<!-- 三个新闻 -->
+<section class="card-container">
+  <!-- 卡片1 -->
+  <div class="card">
+      <div class="image-wrapper">
+          <img src="./image/1x/card-img3-100.jpg" alt="图片1" class="clickable-img">
+      </div>
+      <div class="text-group">
+          <p class="clickable-text">新版《中文排版需求》发布。</p>
+          <p class="clickable-text">W3C发布的《中文排版需求》文档,
+            旨在系统梳理汉字书写系统的排版规范，
+            并为国际化标准提供参考依据。</p>
+          <p class="clickable-text">(排版工作者都应关注，最好参与的一件事情）。</p>
+      </div>
+  </div>
+
+  <!-- 卡片2 -->
+  <div class="card">
+      <div class="image-wrapper">
+          <img src="./image/1x/card-img2-100.jpg" alt="图片2" class="clickable-img">
+      </div>
+      <div class="text-group">
+          <p class="clickable-text">我的作品（平面设计）。</p>
+          <p class="clickable-text">博主职业是一个平面设计师，
+            在广州一家设计公司工作，
+            记录一些做的一些设计作品。</p>
+          <p class="clickable-text">(绝对不是为了跑路）。</p>
+      </div>
+  </div>
+
+  <!-- 卡片3 -->
+  <div class="card">
+      <div class="image-wrapper">
+          <img src="./image/1x/card-img1-100.jpg" alt="图片3" class="clickable-img">
+      </div>
+      <div class="text-group">
+          <p class="clickable-text">deepseek API调用指南。</p>
+          <p class="clickable-text">数学（准确率97.3%）、代码生成任务中表现与OpenAI的GPT-4O、Claude 3.5 Sonnet相当，部分领域甚至超越</p>
+          <p class="clickable-text">(找一些便宜好用的api调用方法）。</p>
+      </div>
+  </div>
+</section>
+
+    <script src="./js/script.js"></script>
 </body>
 </html>
-
-<!-- 作品集 -->
-<section class="portfolio">
-  <!-- 第一行 -->
-  <a href="javascript:void(0)" class="portfolio-item">
-    <img src="work1.jpg" alt="作品1">
-    <div class="hover-mask"></div>
-  </a>
-  <a href="javascript:void(0)" class="portfolio-item">
-    <img src="work2.jpg" alt="作品2">
-    <div class="hover-mask"></div>
-  </a>
-
-  <!-- 第二行 -->
-  <a href="javascript:void(0)" class="portfolio-item">
-    <img src="work3.jpg" alt="作品3">
-    <div class="hover-mask"></div>
-  </a>
-  <a href="javascript:void(0)" class="portfolio-item">
-    <img src="work4.jpg" alt="作品4">
-    <div class="hover-mask"></div>
-  </a>
-
-  <!-- 第三行 -->
-  <a href="javascript:void(0)" class="portfolio-item">
-    <img src="work5.jpg" alt="作品5">
-    <div class="hover-mask"></div>
-  </a>
-  <a href="javascript:void(0)" class="portfolio-item">
-    <img src="work6.jpg" alt="作品6">
-    <div class="hover-mask"></div>
-  </a>
-</section>
