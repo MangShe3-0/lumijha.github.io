@@ -1,50 +1,85 @@
-// js/script.js
-document.addEventListener('DOMContentLoaded', () => {
-    // 移动端菜单切换
-    const navElement = document.querySelector('nav');
-    const navLinks = document.querySelector('.nav-links');
-    
-    // 自动添加激活状态
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.nav-links a.active')?.classList.remove('active');
-            link.classList.add('active');
-            // 实际项目中此处应添加页面切换逻辑
-        });
-    });
-
-    // 视口变化监听
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            navLinks.style.display = 'flex';
-        }
-    });
+// 搜索图标点击事件
+document.querySelector('.search-icon').addEventListener('click', function() {
+  // 在这里添加搜索功能逻辑
+  console.log('触发搜索功能');
 });
 
-//轮播
-// JavaScript 控制
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
+// 按钮悬停效果增强
+document.querySelectorAll('.nav-links button').forEach(button => {
+  button.addEventListener('mouseover', function() {
+      this.style.transform = 'translateY(-2px) scale(1.05)';
+  });
+  
+  button.addEventListener('mouseout', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+  });
+});
 
-function showSlide(index) {
-  slides.forEach(slide => slide.classList.remove('active'));
-  slides[index].classList.add('active');
+// 轮播功能
+function initCarousel() {
+  const slides = document.querySelectorAll('.banner-slide');
+  if (slides.length <= 1) return; // 单图不启用轮播
+
+  let currentIndex = 0;
+  
+  function showNextSlide() {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add('active');
+  }
+
+  // 自动轮播
+  let carouselTimer = setInterval(showNextSlide, 5000);
+
+  // 悬停暂停
+  const container = document.querySelector('.banner-container');
+  container.addEventListener('mouseenter', () => clearInterval(carouselTimer));
+  container.addEventListener('mouseleave', () => {
+      carouselTimer = setInterval(showNextSlide, 5000);
+  });
 }
 
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-}
-
-// 自动播放
-let autoPlay = setInterval(nextSlide, 5000);
-
-// 可选：暂停播放当鼠标悬停
-document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
-  clearInterval(autoPlay);
+// 图片点击事件
+document.querySelectorAll('.clickable-img').forEach(img => {
+  img.addEventListener('click', function() {
+      console.log('点击图片：', this.alt);
+  });
 });
 
-document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
-  autoPlay = setInterval(nextSlide, 5000);
+// 文字点击事件
+document.querySelectorAll('.clickable-text').forEach(text => {
+  text.addEventListener('click', function() {
+      console.log('点击文字：', this.textContent);
+  });
 });
+
+//下拉框
+document.querySelectorAll('.dropdown-container').forEach(container => {
+  let timeout;
+  
+  container.addEventListener('mouseenter', () => {
+      clearTimeout(timeout);
+      container.classList.add('active');
+  });
+  
+  container.addEventListener('mouseleave', () => {
+      timeout = setTimeout(() => {
+          container.classList.remove('active');
+      }, 200);
+  });
+});
+
+// 保持与其他导航按钮的样式统一
+document.querySelectorAll('.dropdown-item').forEach(item => {
+  item.addEventListener('mouseenter', () => {
+      item.style.color = '#007bff';
+  });
+  
+  item.addEventListener('mouseleave', () => {
+      item.style.color = 'white';
+  });
+});
+
+
+// 初始化
+document.addEventListener('DOMContentLoaded', initCarousel);

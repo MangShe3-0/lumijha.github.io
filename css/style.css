@@ -1,167 +1,258 @@
-/* 自定义字体定义 */
 @font-face {
-    font-family: 'Adobe Caslon Pro'; /* 定义字体名称 */
-    src: url('data:font/woff2;base64,d09GMgABAAAAA...'); /* Base64编码的字体文件 */
-    font-weight: 400; /* 常规字重 */
+    font-family: 'Myriad Variable Concept';
+    src: url('fonts/MyriadVariableConcept.woff2') format('woff2'),
+         url('fonts/MyriadVariableConcept.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-/* 响应式布局根设置 */
-:root {
-    --base-width: 1920; /* 设计稿基准宽度 */
-    --side-space: 263px; /* 侧边间距 */
-    /* 动态字体大小计算：基于视口宽度 */
-    font-size: calc(100vw / var(--base-width) * 19.2); 
-}
-
-/* 全局重置 */
 * {
-    margin: 0; /* 清除默认外边距 */
-    padding: 0; /* 清除默认内边距 */
-    box-sizing: border-box; /* 盒模型设置为边框盒 */
-}
-
-/* 导航栏样式 */
-nav {
-    /* 尺寸系统 */
-    width: 100%; /* 全宽 */
-    max-width: 1920px; /* 最大宽度限制 */
-    height: 243px; /* 固定高度 */
-    padding: 20px 263px; /* 内边距：上下20px 左右263px */
-    
-    /* 布局系统 */
-    display: flex; /* 弹性布局 */
-    justify-content: space-between; /* 两端对齐 */
-    align-items: center; /* 垂直居中 */
-    margin: 0 auto; /* 水平居中 */
-    background: #fff; /* 白色背景 */
-    
-    /* 调试辅助 */
-    position: relative; /* 相对定位 */
-    /* border: 1px solid rgba(255,0,0,0.2); 调试边框 */
-}
-
-/* Logo样式 */
-.logo {
-    font-family: 'Adobe Caslon Pro', serif; /* 使用自定义字体 */
-    font-size: 30px; /* 字体大小 */
-    transform: translateX(0.5rem); /* 水平微调位置 */
-    margin-top: 50px; /* 上边距 */
-}
-
-/* 导航链接容器 */
-.nav-links {
-    display: flex; /* 弹性布局 */
-    gap: 34px; /* 子项间距 */
-    list-style: none; /* 去除列表样式 */
-    transform: translateX(-0.5rem); /* 水平位置微调 */
-}
-
-/* 导航链接样式 */
-.nav-links a {
-    font-family: 'Noto Serif SC', serif; /* 中文字体 */
-    font-weight: 600; /* 中等字重 */
-    font-size: 1.25rem; /* 使用rem单位 */
-    text-decoration: none; /* 去除下划线 */
-    color: #333; /* 文字颜色 */
-    padding: 0.5rem 0; /* 上下内边距 */
-    position: relative; /* 相对定位 */
-}
-
-/* 导航链接下划线动画 */
-.nav-links a::after {
-    content: ''; /* 伪元素内容 */
-    position: absolute; /* 绝对定位 */
-    bottom: 0; /* 底部对齐 */
-    left: 0; /* 左侧对齐 */
-    width: 0; /* 初始宽度 */
-    height: 2px; /* 线高 */
-    background: #666; /* 线条颜色 */
-    transition: width 0.3s; /* 过渡动画 */
-}
-
-/* 悬停状态 */
-.nav-links a:hover::after {
-    width: 100%; /* 展开宽度 */
-}
-
-/* 轮播图容器 */
-.carousel-container {
-    width: 100%; /* 全宽 */
-    height: 544px; /* 固定高度 */
-    position: relative; /* 相对定位 */
-    overflow: hidden; /* 隐藏溢出内容 */
-}
-
-/* 轮播图幻灯片 */
-.carousel-slide {
-    position: absolute; /* 绝对定位 */
-    width: 100%; /* 全宽 */
-    height: 100%; /* 全高 */
-    opacity: 0; /* 初始透明 */
-    transition: opacity 1s ease-in-out; /* 透明度过渡动画 */
-}
-
-/* 活动幻灯片 */
-.carousel-slide.active {
-    opacity: 1; /* 完全显示 */
-}
-
-/* 轮播图图片 */
-.carousel-slide img {
-    width: 100%; /* 图片宽度填充 */
-    height: 100%; /* 图片高度填充 */
-    object-fit: cover; /* 保持比例填充容器 */
-}
-
-/* 作品集容器-修正版 */
-.portfolio {
-    width: 100%;
-    padding: 0 26px; /* 左右安全边距 */
-    display: flex;
-    flex-wrap: wrap;
-    gap: 200px 314px; /* 行间距200px 列间距314px */
-    justify-content: center; /* 水平居中 */
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    /* 新增容器尺寸限制 */
-    max-width: calc(540px * 2 + 314px + 26px * 2); /* 540 * 2 + 间距314 + 边距26 * 2 */
-    margin: 0 auto; /* 居中显示 */
-  }
-  
-  .portfolio-item {
-    flex: 0 0 540px; /* 固定宽度禁止缩放 */
-    height: 360px;
+}
+
+.navbar {
+    width: 1920px;
+    height: 130px;
+    background: rgba(0, 0, 0, 0.5); /* 黑色背景，50%透明度 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    /* 设置英文默认字体 */
+    font-family: 'Myriad Variable Concept', Arial, sans-serif;
+}
+
+
+/* Logo组样式 */
+.logo img {
+    height: 40px; /* 根据实际图片比例调整 */
+    width: auto; /* 保持原始宽高比 */
+    object-fit: contain;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+/* 导航按钮组样式 */
+.nav-links {
+    display: flex;
+    gap: 40px; /* 按钮间距 */
+    margin-left: 120px; /* 左边距（可调整与logo的间距） */
+    margin-right: auto; /* 自动右边距（可调整与搜索图标的间距） */
+}
+
+.nav-links button {
+    padding: 8px 4px;
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white; /* 添加白色文字 */
+    /* 中文样式已在上方设置 */
+}
+.nav-links button:hover {
+    color: #007bff;
+    transform: translateY(-2px);
+}
+
+:lang(en) {  /* 适用于包含英文文本的元素 */
+    font-family: 'Myriad Variable Concept', Arial, sans-serif;
+    font-size: 24pt; /* 约等于32px */
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    margin-left: 120px;
+    margin-right: auto;
+}
+/* 下拉框 */
+/* 在现有CSS中添加以下样式 */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    padding: 12px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.dropdown-container:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(8px);
+}
+
+.dropdown-item {
+    display: block;
+    color: white;
+    padding: 10px 20px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-family: "Noto Sans SC";
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(4px);
+}
+
+/* 调整导航按钮对齐 */
+.nav-links button:not(.dropdown-trigger) {
+    align-self: center;
+}
+
+.dropdown-trigger {
+    position: relative;
+    padding-right: 20px !important;
+}
+
+.dropdown-trigger::after {
+    content: "▼";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-container:hover .dropdown-trigger::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+
+.search-icon img {
+    height: 25px;
+    width: auto;
+    cursor: pointer;
+    margin-right: 100px;
+}
+
+
+/* Banner 样式 */
+.banner-container {
+    width: 1920px;
+    height: 700px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s;
-    /* 移除冲突的margin定义 */
-    /* 移除重复的width/height定义 */
-  }
-
-/* 作品图片 */
-.portfolio-item img {
-    width: 100%; /* 图片宽度填充 */
-    height: 100%; /* 图片高度填充 */
-    object-fit: cover; /* 保持比例填充容器 */
+    margin: 0;
+    padding: 0;
 }
 
-/* 悬停遮罩层 */
-.hover-mask {
-    position: absolute; /* 绝对定位 */
-    top: 0; /* 顶部对齐 */
-    left: 0; /* 左侧对齐 */
-    width: 100%; /* 全宽 */
-    height: 100%; /* 全高 */
-    background: rgba(0,0,0,0.5); /* 半透明黑色背景 */
-    opacity: 0; /* 初始透明 */
-    transition: opacity 0.3s; /* 透明度过渡动画 */
+.banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
-/* 悬停状态 */
-.portfolio-item:hover .hover-mask {
-    opacity: 1; /* 显示遮罩层 */
+.banner-slide.active {
+    opacity: 1;
 }
 
-.portfolio-item:hover {
-    transform: scale(1.05); /* 缩放效果 */
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持图片比例填充容器 */
+    display: block;
 }
 
+/* 容器样式 */
+.card-container {
+    margin: 104px 128px 0; /* 上边距104px 左右128px */
+    display: flex;
+    justify-content: space-between;
+    position: relative; /* 新增定位上下文 */
+}
+
+/* 卡片基础样式 */
+.card {
+    width: 460px;
+    height: 840px;
+    background: #000;
+    position: relative; /* 定位基准 */
+}
+
+/* 图片容器定位 */
+.image-wrapper {
+    width: 340px;
+    height: 506px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-170px); /* 340/2=170 */
+    top: 60px; /* 可根据实际需求调整 */
+}
+
+.clickable-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* 文字组定位 */
+.text-group {
+    position: absolute;
+    width: 100%;
+    top: 606px; /* 60+506+40=606 */
+    left: 24px;
+    padding: 0 40px;
+    color:#fff;
+}
+
+.clickable-text:first-child {
+    font-size: 26px; /* 约等于40px */
+    font-weight: 700; /* 加粗显示 */
+    margin-bottom: 30px; /* 增大间距 */
+    font-family: "Noto Sans SC";
+}
+.clickable-text:not(:first-child) {
+    /* 限制段落宽度 */
+    max-width: 340px; /* 与图片同宽 */
+    text-align: justify;
+    text-align-last: left; /* 末行左对齐 */
+    line-height: 1.6;
+    overflow-wrap: break-word;
+    hyphens: auto; /* 自动连字符 */
+    
+    /* 保持原有样式 */
+    font-size: 15px;
+    margin-bottom: 34px;
+}
+
+/* 后两组文字 */
+.clickable-text {
+    font-size: 16px; /* 约等于21.33px */
+    font-weight: 400; /* 常规字重 */
+    margin-bottom: 34px;
+    font-family: "Noto Sans SC";
+}
+
+
+.clickable-text:last-child {
+    margin-bottom: 0;
+}
+
+/* 悬停效果 */
+.clickable-img:hover,
+.clickable-text:hover {
+    opacity: 0.8;
+}
