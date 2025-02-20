@@ -15,31 +15,27 @@
 .navbar {
     width: 1920px;
     height: 130px;
-    background: rgba(0, 0, 0, 0.5); /* 黑色背景，50%透明度 */
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 50px;
-    /* 设置英文默认字体 */
     font-family: 'Myriad Variable Concept', Arial, sans-serif;
 }
 
-
-/* Logo组样式 */
 .logo img {
-    height: 40px; /* 根据实际图片比例调整 */
-    width: auto; /* 保持原始宽高比 */
+    height: 40px;
+    width: auto;
     object-fit: contain;
     margin-left: 100px;
     margin-top: 20px;
 }
 
-/* 导航按钮组样式 */
 .nav-links {
     display: flex;
-    gap: 40px; /* 按钮间距 */
-    margin-left: 120px; /* 左边距（可调整与logo的间距） */
-    margin-right: auto; /* 自动右边距（可调整与搜索图标的间距） */
+    gap: 40px;
+    margin-left: 120px;
+    margin-right: auto;
 }
 
 .nav-links button {
@@ -49,28 +45,15 @@
     border: none;
     cursor: pointer;
     transition: 0.3s;
-    color: white; /* 添加白色文字 */
-    /* 中文样式已在上方设置 */
+    color: white;
 }
+
 .nav-links button:hover {
     color: #007bff;
     transform: translateY(-2px);
 }
 
-:lang(en) {  /* 适用于包含英文文本的元素 */
-    font-family: 'Myriad Variable Concept', Arial, sans-serif;
-    font-size: 24pt; /* 约等于32px */
-}
-
-.nav-links {
-    display: flex;
-    gap: 40px;
-    margin-left: 120px;
-    margin-right: auto;
-}
-<<<<<<< HEAD
-/* 下拉框 */
-/* 在现有CSS中添加以下样式 */
+/* 新增下拉菜单样式 */
 .dropdown-container {
     position: relative;
     display: inline-block;
@@ -113,11 +96,6 @@
     transform: translateX(4px);
 }
 
-/* 调整导航按钮对齐 */
-.nav-links button:not(.dropdown-trigger) {
-    align-self: center;
-}
-
 .dropdown-trigger {
     position: relative;
     padding-right: 20px !important;
@@ -137,9 +115,11 @@
 .dropdown-container:hover .dropdown-trigger::after {
     transform: translateY(-50%) rotate(180deg);
 }
-=======
->>>>>>> 78a652e89b9cfbb66fbfc6c309fc0a19ca5ce131
 
+:lang(en) {
+    font-family: 'Myriad Variable Concept', Arial, sans-serif;
+    font-size: 24pt;
+}
 
 .search-icon img {
     height: 25px;
@@ -148,8 +128,7 @@
     margin-right: 100px;
 }
 
-
-/* Banner 样式 */
+/* 保持原有其他样式 */
 .banner-container {
     width: 1920px;
     height: 700px;

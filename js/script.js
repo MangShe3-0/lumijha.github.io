@@ -1,6 +1,5 @@
 // 搜索图标点击事件
 document.querySelector('.search-icon').addEventListener('click', function() {
-  // 在这里添加搜索功能逻辑
   console.log('触发搜索功能');
 });
 
@@ -18,7 +17,7 @@ document.querySelectorAll('.nav-links button').forEach(button => {
 // 轮播功能
 function initCarousel() {
   const slides = document.querySelectorAll('.banner-slide');
-  if (slides.length <= 1) return; // 单图不启用轮播
+  if (slides.length <= 1) return;
 
   let currentIndex = 0;
   
@@ -28,11 +27,9 @@ function initCarousel() {
       slides[currentIndex].classList.add('active');
   }
 
-  // 自动轮播
   let carouselTimer = setInterval(showNextSlide, 5000);
-
-  // 悬停暂停
   const container = document.querySelector('.banner-container');
+  
   container.addEventListener('mouseenter', () => clearInterval(carouselTimer));
   container.addEventListener('mouseleave', () => {
       carouselTimer = setInterval(showNextSlide, 5000);
@@ -53,8 +50,7 @@ document.querySelectorAll('.clickable-text').forEach(text => {
   });
 });
 
-<<<<<<< HEAD
-//下拉框
+// 下拉菜单功能（保留新增部分）
 document.querySelectorAll('.dropdown-container').forEach(container => {
   let timeout;
   
@@ -70,7 +66,6 @@ document.querySelectorAll('.dropdown-container').forEach(container => {
   });
 });
 
-// 保持与其他导航按钮的样式统一
 document.querySelectorAll('.dropdown-item').forEach(item => {
   item.addEventListener('mouseenter', () => {
       item.style.color = '#007bff';
@@ -80,9 +75,6 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
       item.style.color = 'white';
   });
 });
-
-=======
->>>>>>> 78a652e89b9cfbb66fbfc6c309fc0a19ca5ce131
 
 // 初始化
 document.addEventListener('DOMContentLoaded', initCarousel);
