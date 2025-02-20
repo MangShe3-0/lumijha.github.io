@@ -68,6 +68,7 @@
     margin-left: 120px;
     margin-right: auto;
 }
+<<<<<<< HEAD
 /* 下拉框 */
 /* 在现有CSS中添加以下样式 */
 .dropdown-container {
@@ -136,6 +137,8 @@
 .dropdown-container:hover .dropdown-trigger::after {
     transform: translateY(-50%) rotate(180deg);
 }
+=======
+>>>>>>> 78a652e89b9cfbb66fbfc6c309fc0a19ca5ce131
 
 
 .search-icon img {

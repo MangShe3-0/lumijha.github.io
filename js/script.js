@@ -53,6 +53,7 @@ document.querySelectorAll('.clickable-text').forEach(text => {
   });
 });
 
+<<<<<<< HEAD
 //下拉框
 document.querySelectorAll('.dropdown-container').forEach(container => {
   let timeout;
@@ -80,6 +81,8 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
   });
 });
 
+=======
+>>>>>>> 78a652e89b9cfbb66fbfc6c309fc0a19ca5ce131
 
 // 初始化
 document.addEventListener('DOMContentLoaded', initCarousel);
