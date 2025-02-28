@@ -13,7 +13,9 @@ document.querySelectorAll('.nav-links button').forEach(button => {
       this.style.transform = 'translateY(0) scale(1)';
   });
 });
-
+document.getElementById("nav-type").onclick = function(){
+  window.location.href = "./subpages/Typography/index.html"
+}
 // 轮播功能
 function initCarousel() {
   const slides = document.querySelectorAll('.banner-slide');
