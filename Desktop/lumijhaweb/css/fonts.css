@@ -1,0 +1,43 @@
+/* 本地字体备份 */
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Noto Sans SC Regular'), local('NotoSansSC-Regular'),
+         local('PingFang SC'), local('PingFangSC-Regular'),
+         local('Microsoft YaHei'), local('微软雅黑'),
+         local('Hiragino Sans GB'), local('黑体');
+}
+
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local('Noto Sans SC Medium'), local('NotoSansSC-Medium'),
+         local('PingFang SC Medium'), local('PingFangSC-Medium'),
+         local('Microsoft YaHei Bold'), local('微软雅黑 Bold'),
+         local('Hiragino Sans GB Bold'), local('黑体 Bold');
+}
+
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Noto Sans SC Bold'), local('NotoSansSC-Bold'),
+         local('PingFang SC Bold'), local('PingFangSC-Bold'),
+         local('Microsoft YaHei Bold'), local('微软雅黑 Bold'),
+         local('Hiragino Sans GB Bold'), local('黑体 Bold');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Montserrat Bold'), local('Montserrat-Bold'),
+         local('Arial Bold'), local('Arial-Bold'),
+         local('Helvetica Bold'), local('Helvetica-Bold');
+} 

@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>设计师·路的博客</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- 字体加载 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 本地字体备份 -->
+    <link rel="stylesheet" href="css/fonts.css">
     <!-- fullPage.js CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
 </head>
@@ -16,7 +19,7 @@
         <!-- 第一页 -->
         <div class="section" id="page2">
             <div class="logo-container">
-                <img class="logo" src="image/logo.svg" alt="Logo">
+                <img class="logo" src="./image/logo.svg" alt="Logo">
                 <div class="welcome-text">欢迎来到我的博客,<br>我是设计师·路。</div>
                 <div class="welcome-text2">
                     请尽情使用我的网页<br>
@@ -34,43 +37,43 @@
             </div>
             
             <div class="gradient-box"></div>
-        </div>  <!-- 添加缺失的闭合标签 -->
+        </div>
         
         <!-- 第二页 -->
         <div class="section" id="page3">
             <div class="page-content">
-                <h1>作品集</h1>
-                <div class="works">
-                    <article>
-                        <img src="image/work1.jpg" alt="Work 1">
-                        <h2>作品标题 1</h2>
-                        <p>作品描述 1</p>
-                    </article>
-                    <article>
-                        <img src="image/work2.jpg" alt="Work 2">
-                        <h2>作品标题 2</h2>
-                        <p>作品描述 2</p>
-                    </article>
-                    <article>
-                        <img src="image/work3.jpg" alt="Work 3">
-                        <h2>作品标题 3</h2>
-                        <p>作品描述 3</p>
-                    </article>
-                </div>
+                <img src="./image/page3-title.png" alt="标题图片">
+            </div>
+            <div class="gif-container">
+                <img id="font-animation" src="./image/font-animation.gif" alt="字体动画">
+            </div>
+            <div class="page3-text">
+                这里准备了一些字体<span class="free-text">免费</span>下载，<br>我平时在工作中用到的。<br>希望可以帮到你们！
+            </div>
+            <div class="download-link">
+                <a href="#">进入内容页</a>
+                <span class="green-triangle"></span>
             </div>
         </div>
         
         <!-- 第三页 -->
         <div class="section" id="page4">
-            <div class="page-content">
-                <h1>关于我</h1>
-                <p>我是一名专注于用户体验和视觉设计的设计师...</p>
-                <!-- 这里可以添加关于我的详细信息 -->
+            <div class="typography-text">typography</div>
+            <div class="chinese-typography">字体，<br>排印。</div>
+            <div class="page4-image-container">
+                <img src="./image/page4.jpg" alt="排版图片" class="typography-image">
+            </div>
+            <div class="page3-text">
+                分享字体排印知识。<br> <a href="https://www.w3.org/International/clreq/" target="_blank" style="color: inherit; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#00FF5B'" onmouseout="this.style.color='inherit'">W3C中文排版需求图文解读。</a> <br>分享优秀排版作品。
+            </div>
+            <div class="download-link">
+                <a href="#">进入内容页</a>
+                <span class="green-triangle"></span>
             </div>
         </div>
         
         <!-- 第四页 -->
-        <div class="section" id="page4">
+        <div class="section" id="page5">
             <div class="page-content">
                 <h1>联系方式</h1>
                 <p>想要合作或了解更多信息，请通过以下方式联系我...</p>
@@ -78,12 +81,12 @@
             </div>
             
             <footer>
-                <p>© 2023 设计师·路. 保留所有权利</p>
+                <!-- 版权信息已移除 -->
             </footer>
         </div>
     </div>
     
-    <!-- fullPage.js JavaScript -->
+    <!-- 引入脚本文件 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
     <script src="js/main.js"></script>
 </body>
