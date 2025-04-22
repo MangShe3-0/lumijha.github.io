@@ -134,7 +134,7 @@ main {
 
 /* 渐变矩形 */
 .gradient-box {
-    position: fixed;
+    position: absolute;
     left: 3.75rem;
     top: 5.75rem;
     width: 28rem;
@@ -149,6 +149,20 @@ main {
 @keyframes g {
     0%,100% { background-position: 0% 50% }
     50% { background-position: 100% 50% }
+}
+
+/* 针对较小高度屏幕的渐变盒子调整 */
+@media (max-height: 800px) {
+    .gradient-box {
+        height: 80vh; /* 使用视口高度而不是固定像素 */
+    }
+}
+
+@media (max-height: 600px) {
+    .gradient-box {
+        height: 70vh;
+        width: 20rem; /* 在较小高度的屏幕上也减小宽度 */
+    }
 }
 
 /* 文章部分 */
@@ -269,6 +283,10 @@ footer {
         left: 0; /* 保持与三角形左对齐 */
         bottom: -15rem; /* 保持与大屏幕一致 */
     }
+    
+    .works-title {
+        font-size: 120px; /* 在较小屏幕上减小字体 */
+    }
 }
 
 @media (max-width: 968px) {
@@ -292,6 +310,10 @@ footer {
     .bottom-links {
         bottom: -13rem; /* 略微调整，适应较小屏幕 */
         gap: 1.5rem; /* 减少链接间距 */
+    }
+    
+    .works-title {
+        font-size: 90px; /* 进一步减小字体 */
     }
 }
 
@@ -346,6 +368,11 @@ footer {
     .welcome-text2::after {
         bottom: -70px; /* 在小屏幕上减少三角形与文本的距离 */
     }
+    
+    .works-title {
+        font-size: 60px; /* 在移动设备上使用更小的字体 */
+        left: 30px; /* 减小左边距 */
+    }
 }
 
 @media (max-width: 480px) {
@@ -371,6 +398,11 @@ footer {
     
     .welcome-text2::after {
         bottom: -50px; /* 在很小的屏幕上进一步减少距离 */
+    }
+    
+    .works-title {
+        font-size: 42px; /* 在最小屏幕上使用最小字体 */
+        left: 20px; /* 进一步减小左边距 */
     }
 }
 
@@ -469,6 +501,27 @@ footer {
     line-height: 1;
     text-transform: uppercase;
 }
+
+/* 确保两个标题使用相同的字体样式变量 */
+:root {
+    --title-font: 'Montserrat', 'Arial', 'Helvetica', sans-serif;
+    --title-color: #00FF5B;
+}
+
+/* Works标题样式 - 与typography-text共享相同的核心字体属性 */
+.works-title {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    font-family: var(--title-font) !important;
+    font-weight: 700;
+    font-size: 181px;
+    color: var(--title-color);
+    line-height: 1;
+    z-index: 10;
+    text-transform: uppercase;
+}
+
 .chinese-typography { 
     position: absolute; 
     top: 200px; 
@@ -507,3 +560,5 @@ footer {
 .fp-watermark {
     display: none !important;
 }
+
+/* 导航点样式已移至navigation.css */

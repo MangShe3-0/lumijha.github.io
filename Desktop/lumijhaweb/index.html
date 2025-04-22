@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>设计师·路的博客</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- 导航样式 - 放在style.css之后以覆盖原有样式 -->
+    <link rel="stylesheet" href="css/navigation.css">
     <!-- 字体加载 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +15,8 @@
     <link rel="stylesheet" href="css/fonts.css">
     <!-- fullPage.js CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
+    <!-- Page5样式 -->
+    <link rel="stylesheet" href="css/page5-styles.css">
 </head>
 <body>
     <div id="fullpage">
@@ -74,10 +78,29 @@
         
         <!-- 第四页 -->
         <div class="section" id="page5">
+            <div class="works-title" style="font-family: 'Montserrat', Arial, Helvetica, sans-serif !important;">LUMIJHA'S WORKS</div>
+            <div class="works-subtitle">GRAPHIC DESIGN AND PHOTOGRAPHY</div>
+            <div class="works-subtitle-cn">设计&amp;摄影</div>
+            
+            <!-- 作品展示区域 -->
+            <div class="works-showcase">
+                <!-- 平面设计区域 -->
+                <div class="work-category graphic-design">
+                    <div class="category-image">
+                        <img src="./image/graphic.png" alt="平面设计 - 35-8" title="平面设计作品">
+                    </div>
+                </div>
+                
+                <!-- 摄影区域 -->
+                <div class="work-category photography">
+                    <div class="category-image">
+                        <img src="./image/photography.png" alt="摄影 - 36-8" title="摄影作品">
+                    </div>
+                </div>
+            </div>
+            
             <div class="page-content">
-                <h1>联系方式</h1>
-                <p>想要合作或了解更多信息，请通过以下方式联系我...</p>
-                <!-- 这里可以添加联系方式 -->
+                <!-- 内容将由JavaScript动态加载 -->
             </div>
             
             <footer>

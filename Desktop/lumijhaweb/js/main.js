@@ -14,24 +14,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastFrameSrc = './image/font-animation-last-frame.png'; // 最后一帧源
     
     // 初始化fullPage.js
-    new fullpage('#fullpage', {
+    var myFullpage = new fullpage('#fullpage', {
         // 基本配置
         autoScrolling: true,
         scrollBar: false,
         navigation: true,
         navigationPosition: 'right',
-        showActiveTooltip: false,
+        navigationTooltips: [], // 移除文字提示
+        showActiveTooltip: false, // 禁用提示显示
         anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
-        navigationTooltips: ['Home', 'Fonts', 'Typography', 'Contact'],
         scrollingSpeed: 800, // 滚动动画时间
         scrollingBar: false,
         verticalCentered: true,
         credits: { enabled: false }, // 禁用底部水印
         
-        // 禁用默认键盘滚动，我们将手动处理
-        keyboardScrolling: false,
+        // 启用键盘滚动
+        keyboardScrolling: true,
         
-        // 禁用默认的滚动行为，完全由我们控制
+        // 允许跨页导航
         scrollOverflow: false,
         scrollOverflowOptions: {
             scrollbars: false
@@ -39,9 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
         normalScrollElements: '.works',
         touchSensitivity: 15,
         
-        // 完全接管页面滚动
+        // 添加响应式选项
+        responsiveHeight: 500, // 当高度小于500px时禁用自动滚动功能
+        
+        // 页面滚动管理
         onLeave: function(origin, destination, direction) {
-            console.log(`尝试从第${origin.index+1}页滚动到第${destination.index+1}页, 方向:${direction}`);
+            console.log(`从第${origin.index+1}页滚动到第${destination.index+1}页, 方向:${direction}`);
             
             // 添加滚动中的类，用于扩大导航点
             document.body.classList.add('is-scrolling');
@@ -51,44 +54,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
             
-            // 计算目标页面在序列中的索引位置
-            const originIndex = pageSequence.indexOf(origin.index+1);
+            // 更新当前页面索引
             const destinationIndex = pageSequence.indexOf(destination.index+1);
-            
-            // 如果目标页面不是序列中的下一个或上一个页面，阻止滚动
-            if (Math.abs(destinationIndex - originIndex) > 1) {
-                console.log('尝试跳过页面，阻止！');
-                
-                // 设置滚动状态为正在滚动
-                isScrolling = true;
-                
-                // 根据滚动方向决定下一个目标页面
-                let nextPageIndex = (direction === 'down') ? 
-                    originIndex + 1 : originIndex - 1;
-                
-                // 确保索引在合法范围内
-                nextPageIndex = Math.max(0, Math.min(nextPageIndex, pageSequence.length - 1));
-                
-                // 滚动到下一个页面
-                const nextPage = pageSequence[nextPageIndex];
-                console.log(`改为滚动到第${nextPage}页`);
-                
-                // 延迟执行，以确保当前滚动动画已完成
-                setTimeout(() => {
-                    fullpage_api.moveTo(nextPage);
-                    
-                    // 延迟更新当前页面索引和滚动状态
-                    setTimeout(() => {
-                        currentPageIndex = nextPageIndex;
-                        isScrolling = false;
-                    }, 800); // 与滚动动画时间一致
-                }, 50);
-                
-                return false;
+            if (destinationIndex !== -1) {
+                currentPageIndex = destinationIndex;
             }
             
-            // 正常顺序滚动，允许并更新当前页面索引
-            currentPageIndex = destinationIndex;
+            // 处理页面离开时的响应式调整
+            if (window.innerHeight < 600) {
+                // 对于小屏幕高度，调整过渡效果
+                const content = document.querySelectorAll('.section');
+                content.forEach(section => {
+                    section.style.overflow = 'auto';
+                });
+                
+                // 为page5添加特殊处理，确保作品标题在小屏幕上依然可见
+                if (destination.index === 4) { // page5索引为4
+                    const worksTitle = document.querySelector('.works-title');
+                    if (worksTitle) {
+                        worksTitle.style.fontSize = '32px'; // 减小字体大小
+                    }
+                }
+            }
+            
             return true;
         },
         
