@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="css/fonts.css">
     <!-- fullPage.js CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
-    <!-- Page5样式 -->
-    <link rel="stylesheet" href="css/page5-styles.css">
 </head>
 <body>
     <div id="fullpage">
@@ -32,12 +30,7 @@
 请为我点亮下面的星星。
                 </div>
                 
-                <div class="bottom-links">
-                    <a href="#" class="nav-link">精选字体</a>
-                    <a href="#" class="nav-link">AI</a>
-                    <a href="#" class="nav-link">字体排印</a>
-                    <a href="#" class="nav-link">博主</a>
-                </div>
+                <!-- Bottom links removed from here -->
             </div>
             
             <div class="gradient-box"></div>
@@ -55,7 +48,7 @@
                 这里准备了一些字体<span class="free-text">免费</span>下载，<br>我平时在工作中用到的。<br>希望可以帮到你们！
             </div>
             <div class="download-link">
-                <a href="#">进入内容页</a>
+                <a href="pages/fonts.html">进入内容页</a>
                 <span class="green-triangle"></span>
             </div>
         </div>
@@ -71,7 +64,7 @@
                 分享字体排印知识。<br> <a href="https://www.w3.org/International/clreq/" target="_blank" style="color: inherit; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#00FF5B'" onmouseout="this.style.color='inherit'">W3C中文排版需求图文解读。</a> <br>分享优秀排版作品。
             </div>
             <div class="download-link">
-                <a href="#">进入内容页</a>
+                <a href="pages/typography.html">进入内容页</a>
                 <span class="green-triangle"></span>
             </div>
         </div>
@@ -112,15 +105,29 @@
             <div class="page-content">
                 <!-- 内容将由JavaScript动态加载 -->
             </div>
-            
-            <footer>
-                <!-- 版权信息已移除 -->
-            </footer>
         </div>
     </div>
     
+    <!-- ADD bottom-links HERE, outside #fullpage -->
+    <div class="bottom-links section1-links"> <!-- Add a new class for easier targeting -->
+        <a href="pages/fonts.html" class="nav-link">精选字体</a>
+        <a href="#ai-overlay-trigger" id="ai-trigger" class="nav-link">AI</a>
+        <a href="pages/typography.html" class="nav-link">字体排印</a>
+        <a href="pages/about.html" class="nav-link">博主</a>
+    </div>
+
     <!-- 引入脚本文件 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- AI Overlay Structure -->
+    <div id="ai-overlay">
+        <div class="overlay-content">
+            <button class="overlay-close" aria-label="Close overlay">&times;</button>
+            <!-- Content for AI goes here -->
+            <img src="./image/logo.svg" alt="Logo" class="overlay-logo"> 
+            <!-- Add more content as needed -->
+        </div>
+    </div>
 </body>
 </html>
