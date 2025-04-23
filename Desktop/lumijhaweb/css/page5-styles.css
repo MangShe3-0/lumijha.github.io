@@ -96,6 +96,11 @@
     margin-bottom: 10px;
 }
 
+/* 摄影遮罩图片单独设置宽度 */
+.photography-overlay .overlay-content img {
+    width: 485px;
+}
+
 /* 悬停效果 */
 .category-image:hover .image-overlay {
     opacity: 1;
