@@ -57,11 +57,56 @@
 /* 类别图像容器 */
 .category-image {
     margin-bottom: 0; /* 移除底部间距 */
+    position: relative;
+    overflow: hidden;
 }
 
 .category-image img {
-    width: 900px; /* 设置为900px */
+    width: 900px; /* 调整为900px */
     height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* 图片遮罩效果 */
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+/* 遮罩中的内容 */
+.overlay-content {
+    text-align: center;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.overlay-content img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* 悬停效果 */
+.category-image:hover .image-overlay {
+    opacity: 1;
+}
+
+.category-image:hover .overlay-content {
+    transform: translateY(0);
+}
+
+.category-image:hover img {
+    transform: scale(1.05);
 }
 
 /* 类别标题 */
