@@ -91,7 +91,7 @@
 }
 
 .overlay-content img {
-    width: 100px;
+    width: 550px; /* 修改为550px */
     height: auto;
     margin-bottom: 10px;
 }
