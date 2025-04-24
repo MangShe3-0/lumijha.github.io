@@ -1,3 +1,51 @@
+// AI页面控制函数 - 移到全局作用域
+function openAiOverlay() {
+    const aiFrame = document.getElementById('ai-frame');
+    aiFrame.src = "ai.html";
+    aiFrame.style.display = "block";
+    
+    // 强制重排以确保过渡效果生效
+    aiFrame.offsetHeight;
+    
+    // 淡入显示
+    aiFrame.style.opacity = "1";
+    
+    // 禁用fullPage滚动
+    if (typeof fullpage_api !== 'undefined') {
+        fullpage_api.setAllowScrolling(false);
+        fullpage_api.setKeyboardScrolling(false);
+    }
+    
+    // 隐藏导航点
+    const fpNav = document.getElementById('fp-nav');
+    if (fpNav) {
+        fpNav.style.display = 'none';
+    }
+}
+
+function closeAiOverlay() {
+    const aiFrame = document.getElementById('ai-frame');
+    
+    // 淡出效果
+    aiFrame.style.opacity = "0";
+    
+    // 等待过渡效果完成后隐藏
+    setTimeout(function() {
+        aiFrame.style.display = "none";
+        aiFrame.src = "about:blank";
+    }, 300); // 等待时间与过渡时间一致
+    
+    // 恢复fullPage滚动
+    if (typeof fullpage_api !== 'undefined') {
+        fullpage_api.setAllowScrolling(true);
+        fullpage_api.setKeyboardScrolling(true);
+    }
+    
+    // 显示导航点
+    const fpNav = document.getElementById('fp-nav');
+    if (fpNav) fpNav.style.display = 'block';
+}
+
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', function() {
     // 控制台欢迎信息
@@ -175,4 +223,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         gradientBox.style = gradientStyle;
     });
+
+    // 绑定AI触发器事件
+    const aiTrigger = document.getElementById('ai-trigger');
+    if (aiTrigger) {
+        aiTrigger.addEventListener('click', function(event) {
+            event.preventDefault();
+            openAiOverlay();
+        });
+    }
 });

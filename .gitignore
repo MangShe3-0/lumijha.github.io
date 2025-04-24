@@ -1,0 +1,6 @@
+# 忽略素材文件夹
+素材/
+.DS_Store
+
+# 忽略Python环境
+.venv/
