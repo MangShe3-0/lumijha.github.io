@@ -1,0 +1,423 @@
+/* == AI Overlay Styles == */
+#ai-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* 深色背景 */
+    z-index: 10000; /* 确保在所有元素之上 */
+    opacity: 0; /* 开始时完全透明 */
+    visibility: hidden; /* 开始时不可见 */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 当添加此类时显示遮罩 */
+#ai-overlay.overlay-visible {
+    opacity: 1; /* 完全不透明 */
+    visibility: visible; /* 可见 */
+    display: block; /* 确保显示 */
+}
+
+/* 内容区域样式 */
+#ai-overlay .overlay-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Logo 样式 - 按照指定坐标定位 */
+#ai-overlay .overlay-logo {
+    position: absolute;
+    left: 20%; /* 距离左侧 */
+    top: 15vh; /* 距离顶部为视口高度的15% */
+    width: 30vw; /* 宽度为视口宽度的30% */
+    max-width: 522px; /* 最大宽度限制 */
+    height: auto;
+    /* 添加过渡动画 */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* 关闭按钮样式 - 放在右上角 */
+#ai-overlay .overlay-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px; /* 增加点击区域 */
+    height: 40px; /* 增加点击区域 */
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10002; /* 确保按钮在最上层 */
+    display: flex; /* 确保内容居中 */
+    align-items: center;
+    justify-content: center;
+}
+
+#ai-overlay .overlay-close:hover {
+    color: #00FF5B; /* 绿色高亮效果 */
+}
+
+/* 绿色线条样式 */
+#ai-overlay .green-line {
+    position: absolute;
+    left: 19%;
+    top: 500px; /* Logo顶部位置 + 200px */
+    transform: translateX(-50%); /* 水平居中 */
+    width: 80%; /* 宽度 */
+    max-width: 1200px; /* 最大宽度限制 */
+    height: 2px; /* 线条粗细 */
+    background-color: #00FF5B; /* 绿色 */
+    /* 添加过渡动画 */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform-origin: center; /* 确保缩放从中心开始 */
+}
+
+/* 输入框样式 */
+#ai-overlay .ai-input {
+    position: absolute; /* 保持绝对定位 */
+    left: 18%; /* 水平居中 */
+    top: calc(500px - 150px - 15px);
+    transform: translateX(-50%); /* 水平定位调整 */
+    width: 100%; /* 填充容器 */
+    max-width: 1200px; /* 最大宽度限制 */
+    height: 150px; /* 输入框高度 */
+    background-color: transparent; /* 透明背景 */
+    border: none; /* 无边框 */
+    color: #ffffff; /* 输入文本颜色 */
+    font-size: 100px; /* 初始字体大小 */
+    font-family: 'Noto Sans SC', sans-serif; /* 输入文本字体 */
+    font-weight: bold;
+    padding: 10px 20px; /* 内边距 */
+    outline: none; /* 移除焦点时的外框 */
+    box-sizing: border-box; /* 盒模型 */
+    caret-color: #00FF5B; /* 光标颜色 */
+    resize: none; /* 禁止调整大小 */
+    overflow: hidden; /* 隐藏溢出的文本 */
+    white-space: normal; /* 允许换行 */
+    line-height: 1.2; /* 行高 */
+    text-align: left; /* 文本左对齐 */
+    /* 添加过渡动画 */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* 为 placeholder 单独设置字体 */
+#ai-overlay .ai-input::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Placeholder 文本颜色，略微透明 */
+    font-family: 'Noto Sans SC', sans-serif; /* Placeholder 字体 */
+    font-weight: normal; /* 普通字重 */
+    text-align: left; /* 左对齐 */
+}
+
+#ai-overlay .ai-input.two-lines {
+    white-space: normal; /* 允许换行 */
+    height: auto; /* 高度自适应 */
+    line-height: 1.2; /* 行高调整 */
+}
+
+/* 中等字体大小 */
+#ai-overlay .ai-input.medium-font {
+    font-size: 50px; /* 一半大小 */
+}
+
+/* 提示文字样式 */
+#ai-overlay .api-notice {
+    position: absolute; /* 保持绝对定位 */
+    left: 19%; /* 经调整的位置 */
+    top: 520px; /* 调整后的垂直位置 */
+    transform: translateX(-50%) translateY(20px); /* 水平定位调整并初始向下偏移 */
+    color: #888; /* 灰色 */
+    font-size: 18px; /* 字体大小 */
+    line-height: 1.5; /* 行高 */
+    text-align: left; /* 文本左对齐 */
+    width: 80%; /* 宽度 */
+    max-width: 1200px; /* 最大宽度 */
+    padding: 0; /* 内边距 */
+    box-sizing: border-box; /* 盒模型 */
+    z-index: 10001; /* 层级 */
+    /* 添加过渡动画 */
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    font-family: 'Noto Sans SC', sans-serif; /* 输入文本字体 */
+}
+
+/* 添加小字提示样式 */
+#ai-overlay .small-notice {
+    position: absolute;
+    left: 19%;
+    top: 620px; /* api-notice的top值(520px) + 估计的高度 + 30px间距 */
+    transform: translateX(-50%) translateY(20px);
+    color: #666; /* 稍微深一点的灰色 */
+    font-size: 14px; /* 比api-notice更小的字体 */
+    line-height: 1.5;
+    text-align: left;
+    width: 80%;
+    max-width: 1200px;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 10001;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-style: italic; /* 斜体，增加不正经的感觉 */
+}
+
+/* 社交图标区域样式 */
+#ai-overlay .social-icons {
+    position: absolute;
+    left: 22%;
+    top: 720px; /* small-notice的top值(620px) + 约100px */
+    display: flex;
+    gap: 20px;
+    z-index: 10001;
+    /* 添加过渡动画属性 */
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateX(-50%); /* 与small-notice保持一致的水平居中方式 */
+}
+
+#ai-overlay .icon-link {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 移除圆形边框和背景 */
+    border-radius: 0;
+    background: transparent;
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#ai-overlay .icon-link:hover {
+    /* 移除悬停时的背景变化 */
+    background: transparent;
+    transform: translateY(-3px);
+}
+
+#ai-overlay .github-icon:hover {
+    color: #00FF5B;
+}
+
+#ai-overlay .github-icon svg path {
+    fill: #888; /* 灰色 */
+}
+
+#ai-overlay .github-icon:hover svg path {
+    fill: #00FF5B; /* 悬停时变为绿色 */
+}
+
+#ai-overlay .wechat-icon {
+    position: relative;
+}
+
+#ai-overlay .wechat-icon svg path {
+    fill: #888; /* 灰色 */
+}
+
+#ai-overlay .wechat-icon:hover {
+    color: #00FF5B;
+}
+
+#ai-overlay .wechat-icon:hover svg path {
+    fill: #00FF5B; /* 悬停时变为绿色 */
+}
+
+#ai-overlay .wechat-qrcode {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+#ai-overlay .wechat-icon:hover .wechat-qrcode {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#ai-overlay .wechat-qrcode img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* 响应式调整 */
+@media (max-width: 1400px) {
+    #ai-overlay .green-line,
+    #ai-overlay .ai-input {
+        width: 90%; /* 在小屏幕上使用相对宽度 */
+    }
+}
+
+@media (max-width: 768px) {
+    #ai-overlay .ai-input {
+        font-size: 70px; /* 小屏幕上减小初始字体 */
+    }
+    
+    #ai-overlay .ai-input.medium-font {
+        font-size: 35px; /* 小屏幕上减小中等字体 */
+    }
+    
+    #ai-overlay .api-notice {
+        font-size: 16px; /* 小屏幕字体大小 */
+        width: 90%; /* 小屏幕宽度 */
+    }
+}
+
+/* 对话容器样式 */
+.chat-container {
+    position: absolute;
+    width: 90%;
+    max-width: 800px;
+    top: 50%; /* 恢复到原来的位置 */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    height: 100%; /* 确保容器高度足够 */
+}
+
+.chat-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 用户问题样式 */
+.user-question {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10%;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-family: 'Noto Sans', sans-serif;
+    position: relative;
+    top: -100px; /* 调整至更靠上的位置 */
+}
+
+.user-question.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* AI思考状态样式 */
+.ai-thinking {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+    top: -80px; /* 使位置靠上 */
+}
+
+.ai-thinking.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 思考进度条样式 */
+.thinking-progress {
+    width: 0;
+    height: 3px;
+    background-color: #00FF5B;
+    margin: 0 auto 30px;
+    max-width: 100px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: relative;
+    top: -80px; /* 与思考状态保持一致 */
+}
+
+.thinking-progress.visible {
+    opacity: 1;
+    animation: progressAnimation 2s infinite ease-in-out;
+}
+
+@keyframes progressAnimation {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 100px;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+/* AI回复样式 */
+.ai-response {
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    opacity: 0;
+    margin-top: -180px; /* 使位置更靠上 */
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-family: 'Noto Sans SC', sans-serif;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.ai-response.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 问问其他的按钮样式 */
+.ask-more-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00FF5B;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    position: absolute;
+    bottom: 10%; /* 距离底部10% */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10002; /* 确保按钮在最上层 */
+}
+
+.ask-more-btn:hover {
+    background-color: #00cc49;
+}
+
+.ask-more-btn.visible {
+    opacity: 1;
+} 
