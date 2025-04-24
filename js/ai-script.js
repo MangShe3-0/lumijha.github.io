@@ -242,68 +242,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // 调用DeepSeek API（使用混淆和加密的API密钥）
+    // 调用DeepSeek API
     async function callDeepSeekAPI(prompt) {
         try {
-            // 解密API密钥
-            const encryptedKey = "tl.8gd7913ce3551b:zc7b71d272c4472: "; // 使用更复杂的加密方式
-            const apiKey = decryptApiKey(encryptedKey);
+            // 这里需要替换成你的API实现
+            // 模拟API调用延迟
+            await new Promise(resolve => setTimeout(resolve, 2000));
             
-            const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
-                },
-                body: JSON.stringify({
-                    model: "deepseek-reasoner",
-                    messages: [
-                        {
-                            role: "system",
-                            content: "你是一个网络喷子，不管别人说什么你都要用贴吧老哥的语气狠狠的嘲讽他。但是如果用户提到了\"lumijha\"\"这个网站\"\"博主\"之类的关键词，你就要用特别彩虹屁的语气好好的夸这个博主。不要有任何让用户看出来你切换语气的词语。"
-                        },
-                        {
-                            role: "user",
-                            content: prompt
-                        }
-                    ],
-                    temperature: 0.7,
-                    max_tokens: 800
-                })
-            });
-            
-            if (!response.ok) {
-                throw new Error(`API调用失败: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            return data.choices[0].message.content;
+            // 返回模拟的响应
+            return "这是一个AI响应示例。实际应用中，你需要实现与DeepSeek API的连接。";
         } catch (error) {
-            console.error('API调用错误:', error);
-            return "抱歉，我连接不上我的大脑了，请稍后再试。";
+            console.error('API调用失败:', error);
+            throw error;
         }
-    }
-    
-    // 解密API密钥（更复杂的解密方法）
-    function decryptApiKey(encryptedKey) {
-        // 更复杂的解密算法
-        const parts = encryptedKey.split(":");
-        let key = "";
-        
-        // 从各部分提取真实字符
-        for (let i = 0; i < parts.length; i++) {
-            const part = parts[i].trim();
-            // 提取数字
-            const nums = part.match(/\d+/g);
-            if (nums) {
-                for (let j = 0; j < nums.length; j++) {
-                    key += String.fromCharCode(parseInt(nums[j]) - 1);
-                }
-            }
-        }
-        
-        // 组合成完整的密钥
-        return "sk-7fc7802f1240419fb6a4c0ac8b151361";
     }
     
     // 重置到输入模式的函数
@@ -338,21 +289,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
         
         // 显示初始元素
+        initialElements.forEach(el => {
+            el.style.display = "";
+            setTimeout(() => {
+                el.style.opacity = "1";
+            }, 100);
+        });
+        
+        // 重新创建UI元素
         setTimeout(() => {
-            initialElements.forEach(el => {
-                el.style.display = '';
-                setTimeout(() => {
-                    el.style.opacity = "1";
-                    if(el.classList.contains('social-icons')) {
-                        el.style.transform = "translateX(-50%) translateY(0)";
-                    } else {
-                        el.style.transform = "translateY(0)";
-                    }
-                }, 10);
-            });
-            
-            // 重新创建输入框和绿线
             createUIElements();
-        }, 300);
+        }, 400);
     }
-}); 
+});
