@@ -1,0 +1,46 @@
+/* 本地字体备份 */
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Noto Sans SC Regular'), local('NotoSansSC-Regular'),
+         local('PingFang SC'), local('PingFangSC-Regular'),
+         local('Microsoft YaHei'), local('微软雅黑'),
+         local('Hiragino Sans GB'), local('黑体');
+}
+
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local('Noto Sans SC Medium'), local('NotoSansSC-Medium'),
+         local('PingFang SC Medium'), local('PingFangSC-Medium'),
+         local('Microsoft YaHei Bold'), local('微软雅黑 Bold'),
+         local('Hiragino Sans GB Bold'), local('黑体 Bold');
+}
+
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Noto Sans SC Bold'), local('NotoSansSC-Bold'),
+         local('PingFang SC Bold'), local('PingFangSC-Bold'),
+         local('Microsoft YaHei Bold'), local('微软雅黑 Bold'),
+         local('Hiragino Sans GB Bold'), local('黑体 Bold');
+}
+
+/* 强化Montserrat字体定义 */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-display: block; /* 更改为block确保字体显示优先级 */
+    src: url('https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2') format('woff2'),
+         local('Montserrat Bold'), local('Montserrat-Bold'),
+         local('Arial Bold'), local('Arial-Bold'),
+         local('Helvetica Bold'), local('Helvetica-Bold');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+} 

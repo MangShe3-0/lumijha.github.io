@@ -1,0 +1,994 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', '黑体', sans-serif;
+}
+
+/* 隐藏所有滚动条 */
+html, body {
+    height: 100%;
+    overflow: hidden; /* 防止整个页面出现滚动条 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.fp-scrollable {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.fp-scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+/* 专门针对第五页的滚动条 */
+#page5 .fp-scrollable {
+    overflow: hidden !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 导航样式 */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 3.75rem;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.7;
+    transform: translateY(-2px);
+}
+
+nav a.active {
+    border-bottom: 2px solid #00FF00;
+}
+
+/* 主要内容区域 */
+main {
+    padding-top: 5rem;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Logo容器 */
+.logo-container {
+    position: absolute;
+    top: 6rem;
+    right: 3.75rem;
+    left: auto;
+    max-width: 900px;
+    width: calc(100% - 28rem - 3.75rem - 3.75rem); /* 计算宽度：100% - 渐变框宽度 - 左边距 - 右边距 */
+}
+
+.logo {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    display: block;
+}
+
+.welcome-text {
+    position: relative;
+    margin-top: 9rem;
+    font-size: 2.5rem;
+    color: #ffffff;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.welcome-text2 {
+    position: relative;
+    color: #ffffff;
+    margin-top: 3.5rem;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+/* 添加向下三角形 */
+.welcome-text2::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: 0; /* 恢复为左对齐 */
+    transform: none; /* 移除居中变换 */
+    width: 0;
+    height: 0;
+    border-left: 26px solid transparent; /* 三角形宽度的一半 */
+    border-right: 26px solid transparent; /* 三角形宽度的一半 */
+    border-top: 26px solid #00FF5B; /* 绿色色值 */
+}
+
+/* 渐变矩形 */
+.gradient-box {
+    position: absolute;
+    left: 3.75rem;
+    top: 5rem;
+    width: 28rem;
+    height: 52.5rem;
+    background: linear-gradient(135deg, #00FF00, #FF00FF);
+    background-size: 200%;
+    animation: g 8s ease infinite;
+    z-index: -1;
+    border-radius: 0.5rem;
+}
+
+@keyframes g {
+    0%,100% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+}
+
+/* 针对较小高度屏幕的渐变盒子调整 */
+@media (max-height: 800px) {
+    .gradient-box {
+        height: 80vh; /* 使用视口高度而不是固定像素 */
+    }
+}
+
+@media (max-height: 600px) {
+    .gradient-box {
+        height: 70vh;
+        width: 20rem; /* 在较小高度的屏幕上也减小宽度 */
+    }
+}
+
+/* 文章部分 */
+.articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 6rem 3.75rem 3.75rem auto;
+    max-width: 900px;
+}
+
+article {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+article h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #00FF00;
+}
+
+article p {
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.read-more {
+    display: inline-block;
+    color: #FF00FF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.read-more:hover {
+    color: #00FF00;
+}
+
+/* 页脚 */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* 全屏滚动修复 */
+.section {
+    min-height: 100vh;
+    height: 100vh !important; /* 强制高度为100vh */
+    position: relative;
+    overflow: hidden !important; /* 防止内容溢出导致滚动 */
+}
+
+.page-content {
+    min-height: 100vh;
+    height: 100vh !important; /* 确保内容区域高度固定 */
+    padding: 30px 10%;
+    box-sizing: border-box;
+    overflow: hidden !important; /* 防止内容溢出 */
+}
+
+/* page3页面内容样式 */
+#page3 .page-content {
+    padding-top: 60px;
+    padding-left: 60px;
+}
+
+#page3 .page-content img {
+    width: 900px;
+}
+
+.works {
+    max-height: 70vh !important; /* 减小作品区域的高度，防止内容过多 */
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+/* 美化滚动条 */
+.works::-webkit-scrollbar {
+    width: 6px;
+}
+
+.works::-webkit-scrollbar-thumb {
+    background-color: rgba(150,150,150,0.5);
+    border-radius: 6px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .logo-container {
+        right: 2rem;
+        width: calc(100% - 24rem - 2rem - 2rem); /* 调整计算，对应较小屏幕 */
+    }
+    
+    .gradient-box {
+        left: 2rem;
+        width: 24rem;
+    }
+    
+    .articles {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+    
+    .bottom-links {
+        left: 0; /* 保持与三角形左对齐 */
+        bottom: -15rem; /* 保持与大屏幕一致 */
+    }
+    
+    .works-title {
+        font-size: 120px; /* 在较小屏幕上减小字体 */
+    }
+}
+
+@media (max-width: 968px) {
+    .welcome-text {
+        font-size: 2rem;
+    }
+    
+    .welcome-text2 {
+        font-size: 1rem;
+    }
+    
+    .gradient-box {
+        width: 20rem;
+        height: 40rem;
+    }
+    
+    .logo-container {
+        width: calc(100% - 20rem - 2rem - 2rem); /* 针对968px宽度调整 */
+    }
+    
+    .bottom-links {
+        bottom: -13rem; /* 略微调整，适应较小屏幕 */
+        gap: 1.5rem; /* 减少链接间距 */
+    }
+    
+    .works-title {
+        font-size: 90px; /* 进一步减小字体 */
+    }
+
+    /* Hide images on page3 and page4 */
+    .gif-container,
+    .page4-image-container {
+        display: none;
+    }
+
+    /* Adjust text positioning when images are hidden */
+    #page3 .page3-text,
+    #page4 .page3-text {
+        left: 60px;
+        right: 60px; /* Span across */
+        width: auto; /* Allow auto width */
+        bottom: 120px; /* Adjust vertical position */
+    }
+
+    #page3 .download-link,
+    #page4 .download-link {
+        left: 60px; /* Align with text */
+        /* Keep bottom: 60px */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+    
+    nav {
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .logo-container {
+        position: relative; /* 在小屏幕上恢复为相对定位 */
+        top: auto;
+        right: auto;
+        left: auto;
+        margin: 0 auto;
+        padding: 5rem 1rem 0;
+        text-align: center;
+        width: 90%; /* 简化小屏幕上的宽度计算 */
+        max-width: 450px;
+    }
+    
+    .gradient-box {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 450px;
+        height: 30rem;
+        opacity: 0.4;
+        z-index: -1;
+    }
+    
+    .articles {
+        margin: 4rem 1rem;
+    }
+    
+    .bottom-links {
+        position: relative; /* 改回相对定位 */
+        bottom: auto;
+        left: auto;
+        margin-top: 10rem; /* 增加与三角形的距离 */
+        justify-content: flex-start; /* 保持左对齐 */
+        flex-wrap: wrap; /* 允许换行 */
+        gap: 1.5rem; /* 减小间距 */
+        padding: 0; /* 移除内边距 */
+    }
+    
+    .welcome-text2::after {
+        bottom: -70px; /* 在小屏幕上减少三角形与文本的距离 */
+    }
+    
+    .works-title {
+        font-size: 60px; /* 在移动设备上使用更小的字体 */
+        left: 30px; /* 减小左边距 */
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-text {
+        font-size: 1.5rem;
+    }
+    
+    .welcome-text2 {
+        font-size: 0.9rem;
+    }
+    
+    article {
+        padding: 1.5rem;
+    }
+    
+    .bottom-links {
+        margin-top: 8rem; /* 在更小屏幕上调整 */
+    }
+    
+    .nav-link {
+        font-size: 1rem; /* 在小屏幕上减小字体大小 */
+    }
+    
+    .welcome-text2::after {
+        bottom: -50px; /* 在很小的屏幕上进一步减少距离 */
+    }
+    
+    .works-title {
+        font-size: 42px; /* 在最小屏幕上使用最小字体 */
+        left: 20px; /* 进一步减小左边距 */
+    }
+}
+
+/* 底部链接样式 - 默认绝对定位 */
+.bottom-links {
+    position: absolute; 
+    bottom: -13rem; /* 默认位置 */
+    left: 0; 
+    display: flex;
+    gap: 2rem; 
+    z-index: 10; 
+}
+
+/* 新增: 固定在左下角的悬浮链接样式 */
+.section1-links {
+    position: fixed;
+    bottom: 4rem; /* 距视口底部距离 */
+    left: 60rem; /* 修改: 与 logo-container 左侧大致对齐 */
+    z-index: 999; /* 高于导航点 */
+    display: flex;
+    gap: 2rem; /* 保持原始间距 */
+    background: none; /* 无背景 */
+    padding: 0; /* 无内边距 */
+    width: auto; /* 宽度自适应 */
+
+    /* 默认隐藏 */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* 响应式调整 (小屏幕宽度) */
+@media (max-width: 768px) {
+    .section1-links {
+        left: 1rem; /* 调整小屏幕下的左边距 */
+        right: 1rem; /* 同时设置右边距，使其在中间 */
+        bottom: 1.5rem; /* 离底部更近 */
+        width: auto; /* 取消宽度设置，让其自然排列 */
+        justify-content: center; /* 居中排列 */
+        gap: 1.5rem; /* 减小小屏幕间距 */
+    }
+}
+@media (max-width: 480px) {
+     .section1-links {
+        gap: 1rem;
+        /* 可以考虑进一步减小字体大小 */
+        /* font-size: 0.9rem; */
+     }
+}
+
+/* 控制显示的类 */
+.section1-links.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00FF5B; /* 与三角形相同的绿色 */
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* 第二页（page3）样式 */
+.page3-text {
+    position: absolute;
+    left: 60px;
+    bottom: 60px;
+    font-size: 32px;
+    line-height: 36px;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', '黑体', sans-serif;
+}
+
+.free-text {
+    color: #00FF5B;
+}
+
+/* 下载页链接样式 */
+.download-link {
+    position: absolute;
+    left: 315px;
+    bottom: 60px;
+    font-size: 32px;
+    line-height: 36px;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', '黑体', sans-serif;
+}
+
+.download-link a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+    left: 400px;
+}
+
+.download-link a:hover {
+    color: #00FF5B;
+}
+
+/* 绿色三角形 */
+.green-triangle {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 16px solid #00FF5B;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    position: absolute;
+    left: 580px;
+    bottom: -2px;
+}
+
+/* 第三页（page4）样式 */
+.typography-text {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    font-family: 'Montserrat', 'Arial', 'Helvetica', sans-serif;
+    font-weight: 700;
+    font-size: 122px;
+    color: #00FF5B;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* 确保两个标题使用相同的字体样式变量 */
+:root {
+    --title-font: 'Montserrat', 'Arial', 'Helvetica', sans-serif;
+    --title-color: #00FF5B;
+}
+
+/* Works标题样式 - 与typography-text共享相同的核心字体属性 */
+.works-title {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: 181px;
+    color: var(--title-color);
+    line-height: 1;
+    z-index: 10;
+    text-transform: uppercase;
+}
+
+.chinese-typography { 
+    position: absolute; 
+    top: 200px; 
+    left: 60px; 
+    font-size: 225px; 
+    line-height: 225px; 
+    font-weight: 700; 
+    color: #ffffff; 
+}
+
+/* GIF容器样式 */
+.gif-container {
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    width: 48%; /* Changed: Relative width */
+    max-width: 900px; /* Added: Limit max size */
+}
+
+.gif-container img#font-animation { /* Be more specific */
+    max-width: 100%; /* Keep this */
+    width: 100%; /* Changed: Fill container */
+    height: auto; /* Keep this */
+    display: block;
+}
+
+/* 第三页(page4)图片容器样式 */
+.page4-image-container {
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    width: 48%; /* Changed: Relative width */
+    max-width: 900px; /* Added: Limit max size */
+}
+
+.typography-image { /* Class on the img */
+    max-width: 100%; /* Keep this */
+    width: 100%; /* Changed: Fill container */
+    height: auto; /* Keep this */
+    display: block;
+}
+
+/* 隐藏fullPage.js水印 */
+.fp-watermark {
+    display: none !important;
+}
+
+/* 导航点样式已移至navigation.css */
+
+/* == Begin Merged page5-styles.css == */
+
+/* Works副标题样式 - 英文版 */
+.works-subtitle {
+    position: absolute;
+    top: 260px; /* 标题高度 + 60px间距 */
+    left: 60px; /* 与标题左对齐 */
+    font-family: 'Montserrat', 'Arial', 'Helvetica', sans-serif;
+    font-weight: 700;
+    font-size: 60px; /* 调整为60px */
+    color: #00FF5B;
+    line-height: 1;
+    z-index: 10;
+    letter-spacing: -1px; /* 稍微紧凑一些 */
+}
+
+/* Works副标题样式 - 中文版 */
+.works-subtitle-cn {
+    position: absolute;
+    top: 260px; /* 与英文副标题对齐 */
+    right: 60px; /* 右侧对齐 */
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', '黑体', sans-serif;
+    font-weight: 700;
+    font-size: 55px; /* 保持55px */
+    color: #00FF5B;
+    line-height: 1;
+    z-index: 10;
+}
+
+/* 作品展示区域 */
+.works-showcase {
+    position: absolute;
+    top: 380px; /* 在副标题下方 */
+    left: 60px;
+    right: 60px;
+    display: flex;
+    flex-direction: row; /* 水平排列 */
+    justify-content: space-between; /* 左右分开 */
+    gap: 40px;
+    z-index: 10;
+}
+
+/* 作品类别容器 */
+.work-category {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 让左侧图片容器靠左对齐 */
+.graphic-design {
+    align-items: flex-start; /* 左对齐 */
+}
+
+/* 让右侧图片容器靠右对齐 */
+.photography {
+    align-items: flex-end; /* 右对齐 */
+}
+
+/* 类别图像容器 */
+.category-image {
+    margin-bottom: 0; /* 移除底部间距 */
+    position: relative;
+    overflow: hidden;
+}
+
+.category-image img {
+    width: 900px; /* 调整为900px */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* 图片遮罩效果 */
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* 调整透明度从0.7到0.85 */
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+/* 遮罩中的内容 */
+.overlay-content {
+    text-align: center;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.overlay-content img {
+    width: 550px; /* 修改为550px */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* 摄影遮罩图片单独设置宽度 */
+.photography-overlay .overlay-content img {
+    width: 485px;
+}
+
+/* 悬停效果 */
+.category-image:hover .image-overlay {
+    opacity: 1;
+}
+
+.category-image:hover .overlay-content {
+    transform: translateY(0);
+}
+
+.category-image:hover img {
+    transform: scale(1.05);
+}
+
+/* 类别标题 */
+.category-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* 特定类别样式 */
+.graphic-design .category-image {
+    /* 移除特殊样式 */
+}
+
+.photography .category-image {
+    /* 移除特殊样式 */
+}
+
+/* 响应式调整 */
+@media (max-width: 1800px) {
+    .category-image img {
+        width: 700px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .category-image img {
+        width: 600px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .category-image img {
+        width: 500px;
+    }
+}
+@media (max-width: 1200px) {
+    .works-subtitle {
+        font-size: 36px;
+    }
+
+    .works-subtitle-cn {
+        font-size: 45px;
+    }
+
+    .category-image img {
+        width: 400px; /* 稍微减小宽度 */
+    }
+}
+
+@media (max-width: 968px) {
+    .works-subtitle {
+        font-size: 30px;
+    }
+
+    .works-subtitle-cn {
+        font-size: 40px;
+    }
+
+    .works-showcase {
+        flex-direction: column; /* 改为垂直排列 */
+        gap: 30px;
+    }
+
+    .graphic-design, .photography {
+        align-items: center; /* 居中对齐 */
+    }
+
+    .category-image img {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .works-subtitle {
+        font-size: 24px;
+        left: 30px;
+    }
+
+    .works-subtitle-cn {
+        font-size: 32px;
+        right: 30px;
+    }
+
+    .works-showcase {
+        top: 340px;
+        left: 30px;
+        right: 30px;
+        gap: 40px;
+    }
+
+    .category-title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .works-subtitle {
+        font-size: 18px;
+        left: 20px;
+    }
+
+    .works-subtitle-cn {
+        font-size: 24px;
+        right: 20px;
+    }
+
+    .works-showcase {
+        top: 300px;
+        left: 20px;
+        right: 20px;
+        gap: 30px;
+    }
+
+    .category-title {
+        font-size: 16px;
+    }
+}
+
+/* == End Merged page5-styles.css == */
+
+/* == AI Overlay Styles == */
+#ai-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* 深色背景 */
+    z-index: 10000; /* 确保在所有元素之上 */
+    opacity: 0; /* 开始时完全透明 */
+    visibility: hidden; /* 开始时不可见 */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 当添加此类时显示遮罩 */
+#ai-overlay.overlay-visible {
+    opacity: 1; /* 完全不透明 */
+    visibility: visible; /* 可见 */
+    display: block; /* 确保显示 */
+}
+
+/* 内容区域样式 */
+#ai-overlay .overlay-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Logo 样式 - 按照指定坐标定位 */
+#ai-overlay .overlay-logo {
+    position: absolute;
+    left: 275px; /* 距离左边的距离 */
+    top: 213px; /* 距离上边的距离 */
+    width: 522px; /* Logo宽度 */
+    height: auto;
+}
+
+/* 关闭按钮样式 - 放在右上角 */
+#ai-overlay .overlay-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px; /* 增加点击区域 */
+    height: 40px; /* 增加点击区域 */
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10002; /* 确保按钮在最上层 */
+    display: flex; /* 确保内容居中 */
+    align-items: center;
+    justify-content: center;
+}
+
+#ai-overlay .overlay-close:hover {
+    color: #00FF5B; /* 绿色高亮效果 */
+}
+
+/* 绿色线条样式 */
+#ai-overlay .green-line {
+    position: absolute;
+    left: 50%;
+    top: calc(213px + 200px); /* Logo顶部位置 + 200px */
+    transform: translateX(-50%); /* 水平居中 */
+    width: 1358px; /* 指定长度 */
+    height: 2px; /* 线条粗细 */
+    background-color: #00FF5B; /* 绿色 */
+}
+
+/* 输入框样式 */
+#ai-overlay .ai-input {
+    position: absolute;
+    left: 50%;
+    top: calc(213px + 200px - 50px); /* 绿线位置上方50px，使文本基线与线对齐 */
+    transform: translateX(-50%); /* 水平居中 */
+    width: 1358px; /* 与绿线同宽 */
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 100px; /* 初始字体大小 */
+    line-height: 1;
+    text-align: center;
+    outline: none;
+    padding: 0;
+}
+
+/* 两行文本样式 */
+#ai-overlay .ai-input.two-lines {
+    white-space: normal; /* 允许换行 */
+    height: auto; /* 高度自适应 */
+    line-height: 1.2; /* 行高调整 */
+}
+
+/* 中等字体大小 */
+#ai-overlay .ai-input.medium-font {
+    font-size: 50px; /* 一半大小 */
+}
+
+/* 响应式调整 */
+@media (max-width: 1400px) {
+    #ai-overlay .green-line,
+    #ai-overlay .ai-input {
+        width: 90%; /* 在小屏幕上使用相对宽度 */
+    }
+}
+
+@media (max-width: 768px) {
+    #ai-overlay .ai-input {
+        font-size: 70px; /* 小屏幕上减小初始字体 */
+    }
+    
+    #ai-overlay .ai-input.medium-font {
+        font-size: 35px; /* 小屏幕上减小中等字体 */
+    }
+}
