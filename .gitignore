@@ -4,3 +4,29 @@
 
 # 忽略Python环境
 .venv/
+venv/
+env/
+ENV/
+
+# Python缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+
+# IDE文件
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 日志文件
+*.log
+logs/
+
+# 本地配置文件
+.env
+.env.local
